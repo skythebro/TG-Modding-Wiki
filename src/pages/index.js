@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Unofficial Modding API for Tainted Grail: Fall of Avalon">
+      description="Unofficial Modding Documentation for Tainted Grail: Fall of Avalon">
       <HomepageHeader />
       <main>
         <div style={{
