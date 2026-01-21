@@ -3,7 +3,7 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 const config = {
   title: 'Tainted Grail: Fall of Avalon Modding API',
-  tagline: 'Unofficial Modding Documentation',
+  tagline: 'Unofficial Modding Documentation for Tainted Grail: Fall of Avalon',
   favicon: 'img/favicon.ico',
 
   url: 'https://your-docusaurus-test-site.com',
@@ -30,19 +30,43 @@ const config = {
     locales: ['en'],
   },
 
+  scripts: [
+    {
+      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
+      defer: true,
+      'data-website-id': 'YOUR_WEBSITE_ID_HERE',
+      'data-project-name': 'TG.Modding.Wiki',
+      'data-project-color': '#2B3137',
+      'data-project-logo': 'https://your-docusaurus-test-site.com/img/logo.svg',
+    },
+  ],
+
   presets: [
     [
       'classic',
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/TG-Modding/Wiki/edit/main/',
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+      }),
+    ],
+  ],
+
+  plugins: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      ({
+        hashed: true,
+        indexDocs: true,
+        indexBlog: false,
+        docsRouteBasePath: '/docs',
       }),
     ],
   ],
