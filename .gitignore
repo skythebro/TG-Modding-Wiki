@@ -1,0 +1,7 @@
+build/
+.docusaurus/
+.env
+node_modules/
+build.log
+.idea/
+overrides
