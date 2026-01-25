@@ -1,22 +1,309 @@
+/* Dark Fantasy Theme - Tainted Grail: Fall of Avalon */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #35995f;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Core Palette */
+  --tg-gold: #C9A227;
+  --tg-gold-dim: #8a6d1c;
+  --tg-gold-bright: #ffd700;
+  --tg-black: #0D0D0D;
+  --tg-charcoal: #1A1A1A;
+  --tg-charcoal-light: #252525;
+  --tg-parchment: #E8E6E3;
+  --tg-parchment-dim: #b0aba5;
+  --tg-orange: #B8540F;
+  --tg-red: #8B0000;
+  --tg-border: #3a3a3a;
+  
+  /* Docusaurus Overrides - Light Mode (Keeping it functional but muted) */
+  --ifm-color-primary: #B8540F;
+  --ifm-color-primary-dark: #96440c;
+  --ifm-color-primary-darker: #853c0a;
+  --ifm-color-primary-darkest: #522506;
+  --ifm-color-primary-light: #da6412;
+  --ifm-color-primary-lighter: #e0701f;
+  --ifm-color-primary-lightest: #eb9454;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
+/* Dark Mode */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* Primary Brand Colors */
+  --ifm-color-primary: var(--tg-gold);
+  --ifm-color-primary-dark: #b59123;
+  --ifm-color-primary-darker: #ab8921;
+  --ifm-color-primary-darkest: #8c711b;
+  --ifm-color-primary-light: #ddb32b;
+  --ifm-color-primary-lighter: #e6bb2d;
+  --ifm-color-primary-lightest: #fbd54e;
+
+  /* Backgrounds */
+  --ifm-background-color: var(--tg-black);
+  --ifm-background-surface-color: var(--tg-charcoal);
+  
+  /* Text */
+  --ifm-font-color-base: var(--tg-parchment);
+  --ifm-heading-color: var(--tg-gold);
+  
+  /* UI Elements */
+  --ifm-navbar-background-color: var(--tg-black);
+  --ifm-footer-background-color: var(--tg-black);
+  --ifm-menu-color: var(--tg-parchment);
+  --ifm-menu-color-active: var(--tg-gold);
+  
+  /* Borders */
+  --ifm-border-color: var(--tg-border);
+  
+  /* Code Blocks */
+  --docusaurus-highlighted-code-line-bg: rgba(201, 162, 39, 0.1);
+}
+
+/* Typography & Global Styles */
+body {
+  font-family: 'Source Sans 3', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Navbar Styling */
+.navbar {
+  border-bottom: 1px solid var(--tg-border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.navbar__title {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: linear-gradient(45deg, var(--tg-gold), #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero Section Styling */
+.hero--primary {
+  background-color: var(--tg-black);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.15) 0%, transparent 70%),
+    linear-gradient(180deg, var(--tg-black) 0%, var(--tg-charcoal) 100%);
+  border-bottom: 1px solid var(--tg-border);
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle noise texture overlay */
+.hero--primary::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  margin-bottom: 1.5rem;
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  color: var(--tg-parchment-dim);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
+
+/* Buttons */
+.button--primary {
+  background-color: var(--tg-gold);
+  border-color: var(--tg-gold);
+  color: var(--tg-black);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.button--primary:hover {
+  background-color: var(--tg-gold-bright);
+  border-color: var(--tg-gold-bright);
+  color: var(--tg-black);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+}
+
+.button--secondary {
+  background-color: rgba(201, 162, 39, 0.15);
+  border: 1px solid var(--tg-gold);
+  color: var(--tg-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.button--secondary:hover {
+  background-color: rgba(201, 162, 39, 0.3);
+  border-color: var(--tg-gold-bright);
+  color: var(--tg-gold-bright);
+  transform: translateY(-2px);
+}
+
+[data-theme='dark'] .button--secondary {
+  background-color: rgba(201, 162, 39, 0.1);
+  border: 1px solid var(--tg-gold);
+  color: var(--tg-gold);
+}
+
+[data-theme='dark'] .button--secondary:hover {
+  background-color: rgba(201, 162, 39, 0.25);
+  border-color: var(--tg-gold-bright);
+  color: var(--tg-gold-bright);
+}
+
+/* Cards & Features */
+.feature-card {
+  background: var(--tg-charcoal);
+  border: 1px solid var(--tg-border);
+  border-radius: 8px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.feature-card:hover {
+  border-color: var(--tg-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.feature-card h3 {
+  color: var(--tg-gold);
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  color: var(--tg-parchment-dim);
+}
+
+/* Sidebar */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--tg-border) !important;
+}
+
+.menu__link {
+  border-radius: 4px;
+}
+
+.menu__link--active {
+  background: rgba(201, 162, 39, 0.1);
+  color: var(--tg-gold);
+  border-left: 3px solid var(--tg-gold);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--tg-black);
+  border-top: 1px solid var(--tg-border);
+}
+
+.footer__title {
+  color: var(--tg-gold);
+  font-family: 'Cinzel', serif;
+}
+
+.footer__link-item {
+  color: var(--tg-parchment-dim);
+}
+
+.footer__link-item:hover {
+  color: var(--tg-gold);
+}
+
+/* Admonitions */
+.alert {
+  border: 1px solid transparent;
+  background-color: var(--tg-charcoal-light);
+}
+
+.alert--info {
+  border-color: var(--tg-gold);
+  background-color: rgba(201, 162, 39, 0.05);
+}
+
+.alert--warning {
+  border-color: var(--tg-orange);
+  background-color: rgba(184, 84, 15, 0.05);
+}
+
+.alert--danger {
+  border-color: var(--tg-red);
+  background-color: rgba(139, 0, 0, 0.05);
+}
+
+/* Mermaid Diagrams - Zoomable Container */
+.mermaid {
+  overflow: auto;
+  max-height: 70vh;
+  border: 1px solid var(--tg-border);
+  border-radius: 8px;
+  background: var(--tg-charcoal);
+  padding: 1rem;
+  cursor: grab;
+}
+
+.mermaid:active {
+  cursor: grabbing;
+}
+
+.mermaid svg {
+  max-width: none !important;
+  height: auto !important;
+}
+
+[data-theme='dark'] .mermaid {
+  background: var(--tg-charcoal);
+}
+
+.mermaid .node rect,
+.mermaid .node polygon {
+  fill: var(--tg-charcoal-light) !important;
+  stroke: var(--tg-gold-dim) !important;
+}
+
+.mermaid .node .label {
+  color: var(--tg-parchment) !important;
+}
+
+.mermaid .edgePath path {
+  stroke: var(--tg-gold-dim) !important;
+}
+
+.mermaid .edgeLabel {
+  background-color: var(--tg-charcoal) !important;
+  color: var(--tg-parchment-dim) !important;
+}
+
+.mermaid .node:hover rect,
+.mermaid .node:hover polygon {
+  stroke: var(--tg-gold) !important;
+  stroke-width: 2px !important;
+  cursor: pointer;
+}
+
+.mermaid .clickable {
+  cursor: pointer !important;
+}
+
+.mermaid .clickable:hover .label {
+  fill: var(--tg-gold) !important;
 }

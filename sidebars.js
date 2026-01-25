@@ -53,7 +53,27 @@ function getApiSidebar() {
 }
 
 const sidebars = {
-  tutorialSidebar: getApiSidebar(),
+  tutorialSidebar: [
+    {
+      type: 'category',
+      label: 'Guides',
+      collapsible: true,
+      collapsed: false,
+      items: [
+        { type: 'doc', id: 'guides/quick-start', label: 'Quick Start' },
+        { type: 'doc', id: 'guides/game-architecture', label: 'Game Architecture' },
+        { type: 'doc', id: 'guides/scripting-cheatsheet', label: 'Scripting Cheat Sheet' },
+        { type: 'doc', id: 'guides/troubleshooting', label: 'Troubleshooting' },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Code Reference',
+      collapsible: true,
+      collapsed: true,
+      items: getApiSidebar(),
+    },
+  ],
 };
 
 module.exports = sidebars;

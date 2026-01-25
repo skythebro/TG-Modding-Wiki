@@ -2,18 +2,31 @@ const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 const config = {
-  title: 'Tainted Grail: Fall of Avalon Modding API',
-  tagline: 'Unofficial Modding Documentation for Tainted Grail: Fall of Avalon',
+  future: {
+    experimental_faster: {
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      rspackBundler: true,
+      rspackPersistentCache: true,
+      mdxCrossCompilerCache: true,
+    },
+  },
+
+  title: 'Avalon Modding',
+  tagline: 'Unofficial guides & C# code reference for Tainted Grail: Fall of Avalon',
   favicon: 'img/favicon.ico',
 
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  url: 'https://tg-modding.github.io',
+  baseUrl: '/Wiki/',
 
-  organizationName: 'facebook', 
-  projectName: 'docusaurus', 
+  organizationName: 'TG-Modding', 
+  projectName: 'Wiki', 
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+
+  themes: ['@docusaurus/theme-mermaid'],
 
   markdown: {
     format: 'mdx',
@@ -23,6 +36,9 @@ const config = {
       admonitions: true,
       headingIds: true,
     },
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    }
   },
 
   i18n: {
@@ -32,12 +48,10 @@ const config = {
 
   scripts: [
     {
-      src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
+      src: 'https://unpkg.com/@mendable/search@0.0.203/dist/umd/mendable-bundle.min.js',
       defer: true,
-      'data-website-id': 'YOUR_WEBSITE_ID_HERE',
-      'data-project-name': 'TG.Modding.Wiki',
-      'data-project-color': '#2B3137',
-      'data-project-logo': 'https://your-docusaurus-test-site.com/img/logo.svg',
+      'data-style': 'darkMode',
+      'data-type': 'search',
     },
   ],
 
@@ -48,8 +62,6 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/TG-Modding/Wiki/edit/main/',
-          showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
         },
         blog: false,
         theme: {
@@ -67,6 +79,8 @@ const config = {
         indexDocs: true,
         indexBlog: false,
         docsRouteBasePath: '/docs',
+        docsDir: 'docs',
+        ignoreFiles: [/^api\//],
       }),
     ],
   ],
@@ -85,10 +99,10 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'API Reference',
+            label: 'Code Reference',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/TG-Modding/Wiki',
             label: 'GitHub',
             position: 'right',
           },
@@ -101,18 +115,26 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'API Reference',
-                to: '/docs/intro',
+                label: 'Code Reference',
+                to: '/docs/guides/Awaken/ECS/AwakenEcsBootstrap',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} TG-FoA modding wiki.`,
       },
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
         additionalLanguages: ['csharp'],
+      },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
+      },
+      mermaid: {
+        theme: { light: 'neutral', dark: 'dark' },
       },
     }),
 };
